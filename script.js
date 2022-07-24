@@ -3,6 +3,14 @@ const messageContainer = document.getElementById('message-container')
 const messageForm = document.getElementById('send-container')
 const messageInput = document.getElementById('message-input')
 
+socket.on("connect", () => {
+  console.log(socket.id);
+});
+
+socket.on("connect_error", (err) => {
+  console.log(`connect_error due to ${err.message}`);
+});
+
 const name = prompt('What is your name?')
 appendMessage('You joined')
 socket.emit('new-user', name)
